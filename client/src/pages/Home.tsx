@@ -27,6 +27,7 @@ const categories = [
   { id: "cars", label: "سيارات", icon: CarFront },
   { id: "clothes", label: "ملابس", icon: Shirt },
   { id: "files", label: "ملفات", icon: FileCode2 },
+  { id: "free", label: "مجاني", icon: Download },
 ];
 
 const resources = [
@@ -35,7 +36,9 @@ const resources = [
     description: "واجهة HUD نظيفة وسريعة، مصممة لتندمج مع أي سيرفر.",
     category: "scripts",
     categoryLabel: "سكربتات",
-    tag: "مجاني",
+    tag: "مدفوع",
+    price: "$19",
+    isFree: false,
     downloads: "2.4K",
     color: "mint",
     icon: Code2,
@@ -45,7 +48,9 @@ const resources = [
     description: "ماب داخلي بتفاصيل سينمائية وإضاءة واقعية للمدن الحديثة.",
     category: "maps",
     categoryLabel: "مابات",
-    tag: "مجاني",
+    tag: "مدفوع",
+    price: "$35",
+    isFree: false,
     downloads: "1.8K",
     color: "blue",
     icon: MapPinned,
@@ -55,7 +60,9 @@ const resources = [
     description: "سيارة رياضية جاهزة للسباقات مع handling متوازن واحترافي.",
     category: "cars",
     categoryLabel: "سيارات",
-    tag: "مجاني",
+    tag: "مدفوع",
+    price: "$25",
+    isFree: false,
     downloads: "3.1K",
     color: "orange",
     icon: CarFront,
@@ -65,7 +72,9 @@ const resources = [
     description: "باقة ملابس يومية عالية الجودة للشخصيات داخل السيرفر.",
     category: "clothes",
     categoryLabel: "ملابس",
-    tag: "مجاني",
+    tag: "مدفوع",
+    price: "$12",
+    isFree: false,
     downloads: "980",
     color: "purple",
     icon: Shirt,
@@ -131,7 +140,7 @@ export default function Home() {
   const filteredResources = useMemo(() => {
     const query = searchQuery.trim().toLowerCase();
     return resources.filter((resource) => {
-      const matchesCategory = activeCategory === "all" || resource.category === activeCategory;
+      const matchesCategory = activeCategory === "all" || (activeCategory === "free" ? resource.isFree : resource.category === activeCategory);
       const matchesQuery = !query || `${resource.title} ${resource.description} ${resource.categoryLabel}`.toLowerCase().includes(query);
       return matchesCategory && matchesQuery;
     });
@@ -183,7 +192,7 @@ export default function Home() {
             <div className="hero-copy reveal-up">
               <div className="eyebrow"><span className="eyebrow-line"></span> مساحة المطورين العرب <span className="eyebrow-line"></span></div>
               <h1>موارد تبني بها<br /><span>عالمك الخاص.</span></h1>
-              <p className="hero-description">أهلاً بك في <strong>Square Store</strong> — مكتبة أبو فهد المجانية لكل مبرمجي FiveM. سكربتات، مابات، سيارات وملفات جاهزة ترفع مستوى سيرفرك.</p>
+              <p className="hero-description">أهلاً بك في <strong>Square Store</strong> — متجر أبو فهد لموارد FiveM الاحترافية. سكربتات، مابات، سيارات وملفات جاهزة ترفع مستوى سيرفرك، مع قسم مجاني للمجتمع.</p>
               <div className="hero-actions">
                 <button className="primary-button" onClick={() => scrollTo("resources")}>اكتشف الموارد <ArrowUpLeft size={18} /></button>
                 <button className="text-button" onClick={() => scrollTo("about")}>تعرف عليّ <ChevronLeft size={17} /></button>
@@ -214,9 +223,9 @@ export default function Home() {
 
         <section id="resources" className="resources-section section-padding">
           <div className="container">
-            <div className="section-heading reveal-up"><div><div className="section-kicker"><span>01</span> المكتبة</div><h2>كل ما تحتاجه<br /><span>في مكان واحد.</span></h2></div><p>موارد مختارة بعناية، معمولة بحب للمطورين اللي عايزين يبنوا سيرفر مختلف.<br /><strong>كل الملفات مجانية للاستخدام.</strong></p></div>
+            <div className="section-heading reveal-up"><div><div className="section-kicker"><span>01</span> المكتبة</div><h2>كل ما تحتاجه<br /><span>في مكان واحد.</span></h2></div><p>موارد مختارة بعناية، معمولة بحب للمطورين اللي عايزين يبنوا سيرفر مختلف.<br /><strong>منتجات احترافية + قسم مجاني للمجتمع.</strong></p></div>
             <div className="resource-toolbar"><div className="category-tabs">{categories.map(({ id, label, icon: Icon }) => <button key={id} className={`category-tab ${activeCategory === id ? "selected" : ""}`} onClick={() => setActiveCategory(id)}><Icon size={16} />{label}</button>)}</div><label className="search-box"><Search size={17} /><input value={searchQuery} onChange={(event) => setSearchQuery(event.target.value)} placeholder="ابحث عن مورد..." aria-label="ابحث عن مورد" /></label></div>
-            <div className="resource-grid">{filteredResources.map((resource, index) => { const Icon = resource.icon; return <article className={`resource-card reveal-up delay-${(index % 3) + 1}`} key={resource.title}><div className={`resource-visual ${categoryStyles[resource.color]}`}><div className="visual-grid"></div><Icon size={54} strokeWidth={1.15} /><span className="resource-tag">{resource.tag}</span><span className="visual-index">0{index + 1}</span></div><div className="resource-content"><div className="resource-meta"><span>{resource.categoryLabel}</span><span className="meta-divider"></span><span>{resource.downloads} تحميل</span></div><h3>{resource.title}</h3><p>{resource.description}</p><button className="download-button" onClick={() => showToast(`تم تجهيز ${resource.title} — أضف رابط التحميل الخاص بك لاحقاً`)}>تحميل مجاني <Download size={16} /></button></div></article> })}</div>
+            <div className="resource-grid">{filteredResources.map((resource, index) => { const Icon = resource.icon; return <article className={`resource-card reveal-up delay-${(index % 3) + 1}`} key={resource.title}><div className={`resource-visual ${categoryStyles[resource.color]}`}><div className="visual-grid"></div><Icon size={54} strokeWidth={1.15} /><span className={`resource-tag ${resource.isFree ? "free-tag" : "paid-tag"}`}>{resource.tag}</span><span className="visual-index">0{index + 1}</span></div><div className="resource-content"><div className="resource-meta"><span>{resource.categoryLabel}</span><span className="meta-divider"></span><span>{resource.downloads} تحميل</span><strong className="resource-price">{resource.price}</strong></div><h3>{resource.title}</h3><p>{resource.description}</p><button className="download-button" onClick={() => showToast(resource.isFree ? `تم تجهيز ${resource.title} — أضف رابط التحميل الخاص بك لاحقاً` : `تم اختيار ${resource.title} بسعر ${resource.price} — أضف رابط الشراء الخاص بك لاحقاً`)}>{resource.isFree ? "تحميل مجاني" : `شراء الآن — ${resource.price}`} <Download size={16} /></button></div></article> })}</div>
             {filteredResources.length === 0 && <div className="empty-state"><Search size={28} /><strong>ما لقيناش مورد بالبحث ده</strong><span>جرب كلمة مختلفة أو ارجع لكل الموارد.</span></div>}
             <div className="library-footer"><span><span className="pulse-dot"></span> يتم تحديث المكتبة باستمرار</span><button onClick={() => showToast("سيتم إضافة المزيد من الموارد قريباً")}>عرض كل الموارد <ArrowUpLeft size={15} /></button></div>
           </div>

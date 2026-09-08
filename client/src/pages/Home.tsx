@@ -192,7 +192,7 @@ export default function Home() {
             <div className="hero-copy reveal-up">
               <div className="eyebrow"><span className="eyebrow-line"></span> مساحة المطورين العرب <span className="eyebrow-line"></span></div>
               <h1>موارد تبني بها<br /><span>عالمك الخاص.</span></h1>
-              <p className="hero-description">أهلاً بك في <strong>Square Store</strong> — متجر أبو فهد لموارد FiveM الاحترافية. سكربتات، مابات، سيارات وملفات جاهزة ترفع مستوى سيرفرك، مع قسم مجاني للمجتمع.</p>
+              <p className="hero-description">أهلاً بك في <strong>Square Store</strong> — متجر أبو فهد لموارد FiveM الاحترافية. سكربتات، مابات، سيارات وملفات جاهزة ترفع مستوى سيرفرك.</p>
               <div className="hero-actions">
                 <button className="primary-button" onClick={() => scrollTo("resources")}>اكتشف الموارد <ArrowUpLeft size={18} /></button>
                 <button className="text-button" onClick={() => scrollTo("about")}>تعرف عليّ <ChevronLeft size={17} /></button>
@@ -213,17 +213,17 @@ export default function Home() {
                 <div className="code-footer"><span className="live-dot"></span> جاهز للتحميل <span className="footer-right">FiveM / Lua / 0.01ms</span></div>
               </div>
               <div className="floating-note note-top"><Zap size={15} /> خفيف وسريع</div>
-              <div className="floating-note note-bottom"><Check size={15} /> مجاني دائماً</div>
+              <div className="floating-note note-bottom"><Check size={15} /> جاهز للاستخدام</div>
             </div>
           </div>
           <div className="hero-scroll"><span>SCROLL TO EXPLORE</span><span className="scroll-line"></span></div>
         </section>
 
-        <section className="marquee-strip"><div className="marquee-track"><span>FREE RESOURCES</span><b>✦</b><span>BUILT FOR FIVEM</span><b>✦</b><span>CRAFTED BY ABU FAHD</span><b>✦</b><span>FREE RESOURCES</span><b>✦</b><span>BUILT FOR FIVEM</span><b>✦</b></div></section>
+        <section className="marquee-strip"><div className="marquee-track"><span>PREMIUM RESOURCES</span><b>✦</b><span>BUILT FOR FIVEM</span><b>✦</b><span>CRAFTED BY ABU FAHD</span><b>✦</b><span>PREMIUM RESOURCES</span><b>✦</b><span>BUILT FOR FIVEM</span><b>✦</b></div></section>
 
         <section id="resources" className="resources-section section-padding">
           <div className="container">
-            <div className="section-heading reveal-up"><div><div className="section-kicker"><span>01</span> المكتبة</div><h2>كل ما تحتاجه<br /><span>في مكان واحد.</span></h2></div><p>موارد مختارة بعناية، معمولة بحب للمطورين اللي عايزين يبنوا سيرفر مختلف.<br /><strong>منتجات احترافية + قسم مجاني للمجتمع.</strong></p></div>
+            <div className="section-heading reveal-up"><div><div className="section-kicker"><span>01</span> المكتبة</div><h2>كل ما تحتاجه<br /><span>في مكان واحد.</span></h2></div><p>موارد مختارة بعناية، معمولة بحب للمطورين اللي عايزين يبنوا سيرفر مختلف.<br /><strong>جودة احترافية وتجربة استخدام واضحة.</strong></p></div>
             <div className="resource-toolbar"><div className="category-tabs">{categories.map(({ id, label, icon: Icon }) => <button key={id} className={`category-tab ${activeCategory === id ? "selected" : ""}`} onClick={() => setActiveCategory(id)}><Icon size={16} />{label}</button>)}</div><label className="search-box"><Search size={17} /><input value={searchQuery} onChange={(event) => setSearchQuery(event.target.value)} placeholder="ابحث عن مورد..." aria-label="ابحث عن مورد" /></label></div>
             <div className="resource-grid">{filteredResources.map((resource, index) => { const Icon = resource.icon; return <article className={`resource-card reveal-up delay-${(index % 3) + 1}`} key={resource.title}><div className={`resource-visual ${categoryStyles[resource.color]}`}><div className="visual-grid"></div><Icon size={54} strokeWidth={1.15} /><span className={`resource-tag ${resource.isFree ? "free-tag" : "paid-tag"}`}>{resource.tag}</span><span className="visual-index">0{index + 1}</span></div><div className="resource-content"><div className="resource-meta"><span>{resource.categoryLabel}</span><span className="meta-divider"></span><span>{resource.downloads} تحميل</span><strong className="resource-price">{resource.price}</strong></div><h3>{resource.title}</h3><p>{resource.description}</p><button className="download-button" onClick={() => showToast(resource.isFree ? `تم تجهيز ${resource.title} — أضف رابط التحميل الخاص بك لاحقاً` : `تم اختيار ${resource.title} بسعر ${resource.price} — أضف رابط الشراء الخاص بك لاحقاً`)}>{resource.isFree ? "تحميل مجاني" : `شراء الآن — ${resource.price}`} <Download size={16} /></button></div></article> })}</div>
             {filteredResources.length === 0 && <div className="empty-state"><Search size={28} /><strong>ما لقيناش مورد بالبحث ده</strong><span>جرب كلمة مختلفة أو ارجع لكل الموارد.</span></div>}

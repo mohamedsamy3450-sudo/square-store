@@ -118,7 +118,7 @@ export default function Home() {
   const [toast, setToast] = useState("");
 
   useEffect(() => {
-    const timer = window.setTimeout(() => setLoading(false), 1200);
+    const timer = window.setTimeout(() => setLoading(false), 2500);
     return () => window.clearTimeout(timer);
   }, []);
 

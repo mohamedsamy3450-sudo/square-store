@@ -35,7 +35,7 @@ const resources = [
     description: "واجهة HUD نظيفة وسريعة، مصممة لتندمج مع أي سيرفر.",
     category: "scripts",
     categoryLabel: "سكربتات",
-    tag: "مميز",
+    tag: "مجاني",
     downloads: "2.4K",
     color: "mint",
     icon: Code2,
@@ -45,7 +45,7 @@ const resources = [
     description: "ماب داخلي بتفاصيل سينمائية وإضاءة واقعية للمدن الحديثة.",
     category: "maps",
     categoryLabel: "مابات",
-    tag: "جديد",
+    tag: "مجاني",
     downloads: "1.8K",
     color: "blue",
     icon: MapPinned,
@@ -75,7 +75,7 @@ const resources = [
     description: "ملفات بداية مرتبة تساعدك تبني سيرفرك بأقل وقت ممكن.",
     category: "files",
     categoryLabel: "ملفات",
-    tag: "أساسي",
+    tag: "مجاني",
     downloads: "1.2K",
     color: "teal",
     icon: PackageOpen,
@@ -85,7 +85,7 @@ const resources = [
     description: "نظام كراج خفيف مع تجربة استخدام واضحة ودعم متعدد السيارات.",
     category: "scripts",
     categoryLabel: "سكربتات",
-    tag: "مميز",
+    tag: "مجاني",
     downloads: "760",
     color: "pink",
     icon: Box,
@@ -118,7 +118,7 @@ export default function Home() {
   const [toast, setToast] = useState("");
 
   useEffect(() => {
-    const timer = window.setTimeout(() => setLoading(false), 2500);
+    const timer = window.setTimeout(() => setLoading(false), 5000);
     return () => window.clearTimeout(timer);
   }, []);
 

@@ -206,7 +206,7 @@ function vitePluginStorageProxy(): Plugin {
 const plugins = [react(), tailwindcss(), jsxLocPlugin(), vitePluginManusRuntime(), vitePluginManusDebugCollector(), vitePluginStorageProxy()];
 
 export default defineConfig({
-  base: process.env.GITHUB_ACTIONS ? "/square-store-/" : "/",
+  base: process.env.GITHUB_ACTIONS ? "/square-store/" : "/",
   plugins,
   resolve: {
     alias: {

@@ -79,7 +79,7 @@ button:focus-visible, input:focus-visible { outline: 2px solid #b7f36b; outline-
 .mobile-menu { display: none; background: transparent; color: #dce7df; cursor: pointer; }
 
 .hero-section { position: relative; min-height: 750px; padding: 174px 0 95px; display: flex; align-items: center; isolation: isolate; }
-.hero-backdrop { position: absolute; z-index: -3; inset: 0; background: linear-gradient(90deg, rgba(8,10,11,.64) 0%, rgba(8,10,11,.5) 42%, rgba(8,10,11,.62) 100%), url("/manus-storage/square-hero_27519eac.png") center / cover no-repeat, url("/square-store-/square-hero-optimized.jpg") center / cover no-repeat; opacity: .95; }
+.hero-backdrop { position: absolute; z-index: -3; inset: 0; background: linear-gradient(90deg, rgba(8,10,11,.64) 0%, rgba(8,10,11,.5) 42%, rgba(8,10,11,.62) 100%), url("/manus-storage/square-hero_27519eac.png") center / cover no-repeat, url("/square-store/square-hero-optimized.jpg") center / cover no-repeat; opacity: .95; }
 .hero-backdrop::after { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 40%, rgba(8,10,11,.05), #080a0b 94%); }
 .hero-grain { position: absolute; z-index: -2; inset: 0; opacity: .13; pointer-events: none; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.28'/%3E%3C/svg%3E"); mix-blend-mode: overlay; }
 .hero-grid { display: grid; grid-template-columns: 1.04fr .96fr; gap: 74px; align-items: center; direction: ltr; }
